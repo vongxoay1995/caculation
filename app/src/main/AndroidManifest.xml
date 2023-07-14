@@ -14,11 +14,12 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="8fc2950e43fa49be204b9d94a10129d703d6d714" />
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-################~##########"/>
 
         <activity android:name=".calculatorfree.view.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -8,16 +8,14 @@ import androidx.multidex.MultiDexApplication;
 
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
+import com.google.android.gms.ads.MobileAds;
 
 import io.fabric.sdk.android.Fabric;
 
 public class MyApplication extends MultiDexApplication {
     public void onCreate() {
         MultiDex.install(this);
-        Crashlytics crashlyticsKit = new Crashlytics.Builder()
-                .core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
-                .build();
-        Fabric.with(this, crashlyticsKit, new Crashlytics());
+        MobileAds.initialize(this);
         super.onCreate();
     }
 }

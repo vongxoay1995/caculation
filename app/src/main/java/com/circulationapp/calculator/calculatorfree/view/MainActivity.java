@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.circulationapp.calculator.R;
@@ -19,6 +20,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 
 import java.math.BigDecimal;
 
@@ -120,13 +122,12 @@ public class MainActivity extends AppCompatActivity {
         this.adBanner.setAdSize(AdSize.BANNER);
         this.adBanner.setAdUnitId(this.ID_ADS_GG);
         AdRequest.Builder adRequestBuilder = new AdRequest.Builder();
-        adRequestBuilder.addTestDevice(AdRequest.DEVICE_ID_EMULATOR);
-        adRequestBuilder.addTestDevice("A83F9C494EFE301841A1EBF407492B97");
         this.layoutBannerAds.addView(this.adBanner);
         this.adBanner.loadAd(adRequestBuilder.build());
         this.adBanner.setAdListener(new AdListener() {
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
                 MainActivity.this.layoutBannerAds.removeAllViews();
             }
 
